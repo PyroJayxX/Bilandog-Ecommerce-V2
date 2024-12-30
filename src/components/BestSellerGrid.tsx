@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import Card from "./Card";
 
 export const BestSellerGrid: React.FC = () => {
