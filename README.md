@@ -1,6 +1,7 @@
 # Bilandog-Ecommerce-V2
 
-Remastered version of Bilandog website I made from 2021
+(WORK IN PROGRESS)
+Remastered version of Bilandog website I made from 2021.
 
 ## Getting Started
 
