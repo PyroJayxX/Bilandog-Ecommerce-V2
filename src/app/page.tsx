@@ -16,7 +16,7 @@ export default function Home() {
       <div className="w-full h-full p-8" >
         <div className="flex relative">
           <h1 className="text-4xl font-bold text-center italic font-serif flex-grow text-white">Best Sellers</h1>
-          <Image src="/icons/cart_icon.svg" alt="Arrow" width={40} height={40} className="absolute right-10 filter invert" />
+          <Image src="/icons/cart_icon.svg" alt="Arrow" width={40} height={40} className="m-auto md:absolute md:right-10 filter invert" />
         </div>
         <hr className="border-[#A4A4A4] my-8" />
         <BestSellerGrid />
