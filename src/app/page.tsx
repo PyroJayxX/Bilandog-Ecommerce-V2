@@ -10,7 +10,7 @@ export default function Home() {
       
       <div className="relative flex flex-col w-full h-full">
         <TopNav />
-        <div className="w-full md:h-screen grid">
+        <div className="w-full h-dvh grid">
           <Hero />
         </div>
       </div>
@@ -20,7 +20,7 @@ export default function Home() {
           <h1 className="text-4xl xl:text-5xl font-bold text-center italic font-serif flex-grow text-white">Best Sellers</h1>
           <Image src="/icons/cart_icon.svg" alt="Arrow" width={40} height={40} className="m-auto md:absolute md:right-10 filter invert" />
         </div>
-        <hr className="border-[#A4A4A4] md:my-8 xl:my-10" />
+        <hr className="border-[#A4A4A4] my-4 md:my-8 xl:my-10" />
         <BestSellerGrid />
       </div>
 

@@ -1,8 +1,12 @@
 # Bilandog-Ecommerce-V2
 
 (WORK IN PROGRESS)
+
 (NOT YET RESPONSIVE FOR MOBILE VIEW)
+
 Remastered version of Bilandog website I made from 2021.
+
+Created for the purpose of practicing ReactJS with NextJS framework and Tailwind CSS
 
 ## Getting Started
 
