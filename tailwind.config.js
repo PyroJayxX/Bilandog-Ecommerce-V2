@@ -9,6 +9,7 @@ module.exports = {
         sans: ['Segoe UI', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         serif: ['Georgia', 'ui-serif', 'Cambria', 'Times New Roman', 'Times', 'serif'],
         mono: ['SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'],
+        times: ['Times New Roman', 'Times', 'serif'],
       },
     },
   },
