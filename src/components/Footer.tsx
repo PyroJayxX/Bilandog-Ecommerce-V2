@@ -6,7 +6,7 @@ export const Footer = () => {
   return (
     <>
         <hr />
-        <div className="w-screen h-auto p-8 xl:my-5 mx-10 px-32 bg-[#171717] text-white grid grid-cols-3 gap-10 justify-space items-start font-serif">
+        <div className="w-screen h-auto p-8 xl:my-5 md:mx-10 px-32 bg-[#171717] text-white grid grid-cols-3 gap-10 justify-space items-start font-serif">
             <div className="flex flex-col items-start w-full mx-auto">
             <h1 className="text-[#F05A19] text-xl" style={{textShadow: '1px 0px 1px #F05A19'}}> About </h1>
             <Link href="/">About Us</Link>
@@ -27,7 +27,7 @@ export const Footer = () => {
             <div className="md:flex space-x-4">
                 <Image src="/icons/icon_twitter.svg" alt="Twitter" width={30} height={30} />
                 <Image src="/icons/icon_fb.svg" alt="Facebook" width={30} height={30} />
-                <Image src="/icons/icon_ig.svg" alt="Instagram" width={30} height={30} />
+                <Image src="/icons/icon_ig.svg" alt="Instagram" width={35} height={35} />
                 <Image src="/icons/icon_tiktok.svg" alt="Instagram" width={30} height={30} />
             </div>
             <h1>@Bilandog_Corp</h1>
