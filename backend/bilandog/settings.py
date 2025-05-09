@@ -20,13 +20,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-vh9xb4h7a@&#cj-weagb=$nc%sxb(6yon2)&bn%qde(a%^8v$b'
+SECRET_KEY = 'django-insecure-rt6cqwtg-1neb+!)kik!u&)2k+lucljq*tgv+j$30w#6io%qr5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = 'users.CustomUser'
 
 # Application definition
 
@@ -37,7 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'store',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'users',
+    'orders',
 ]
 
 MIDDLEWARE = [
@@ -77,11 +81,11 @@ WSGI_APPLICATION = 'bilandog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'bilandog_db',  
-        'USER': 'postgres',  
-        'PASSWORD': '123',  #
-        'HOST': 'localhost',  
-        'PORT': '5432', 
+        'NAME': 'bilandog_db',
+        'USER': 'postgres',
+        'PASSWORD': '123',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -126,4 +130,3 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-AUTH_USER_MODEL = 'store.User'
