@@ -45,7 +45,7 @@ export default function Login() {
                     const errorData = JSON.parse(errorText);
                     console.error("Error details:", errorData);
                 } catch (e) {
-                    console.error("Could not parse error response as JSON");
+                    console.error(`Could not parse error response as JSON: ${e}`);
                 }
             }
         } catch (error) {
@@ -82,7 +82,7 @@ export default function Login() {
                     const errorData = JSON.parse(errorText);
                     console.error("Error details:", errorData);
                 } catch (e) {
-                    console.error("Could not parse error response as JSON");
+                    console.error(`Could not parse error response as JSON: ${e}`);
                 }
             }
         } catch (error) {
