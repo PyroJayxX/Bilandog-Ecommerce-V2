@@ -3,18 +3,55 @@
 import TopNav from "../../components/TopNav";
 import Footer from "../../components/Footer";
 import { useState } from "react";
+import { useAuth } from "../../context/AuthContext";
 
 export default function Login() {
     const [formType, setFormType] = useState<"login" | "signup">("login");
+    const { login } = useAuth();
 
     const toggleForm = (type: "login" | "signup") => {
         setFormType(type);
     };
 
-    const handleLoginSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleLoginSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        // Handle login logic here
-    }
+        const formData = new FormData(e.currentTarget);
+        const data = Object.fromEntries(formData.entries());
+
+        console.log("Logging in with data:", data);
+
+        try {
+            const res = await fetch("http://localhost:8000/users/login/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                credentials: "include",
+                body: JSON.stringify(data),
+            });
+
+            if (res.ok) {
+                const responseData = await res.json();
+                console.log("Login successful:", responseData);
+                if (responseData.token) {
+                    login(responseData.token);
+                    window.location.href = "/";
+                }
+            } else {
+                const errorText = await res.text();
+                console.error("Login failed:", res.status, errorText);
+                try {
+                    const errorData = JSON.parse(errorText);
+                    console.error("Error details:", errorData);
+                } catch (e) {
+                    console.error("Could not parse error response as JSON");
+                }
+            }
+        } catch (error) {
+            console.error("Error during login:", error);
+        }
+    };
 
     const handleSignupSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
