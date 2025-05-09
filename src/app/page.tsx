@@ -6,10 +6,12 @@ import Footer from "../components/Footer";
 
 export default function Home() {
   return (
-    <div className="w-full h-full overflow-x-hidden bg-[#171717]"> 
-      
-      <div className="relative flex flex-col w-full h-full">
-        <TopNav />
+    <div className="w-full h-full overflow-x-hidden bg-[#171717]">
+      <div className="relative flex flex-col w-full">
+        <div className="fixed top-0 left-0 w-full z-50">
+          <TopNav />
+        </div>
+
         <div className="w-full h-dvh grid">
           <Hero />
         </div>
@@ -27,7 +29,6 @@ export default function Home() {
       <div>
         <Footer />
       </div>
-
     </div>
   );
 }

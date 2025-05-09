@@ -9,7 +9,7 @@ export const Topnav: React.FC = () => {
             <Link href="/" className="truncate" title="Home">Home</Link>
             <Link href="/" className="truncate" title="Hotdogs">Hotdogs</Link>
             <Link href="/" className="truncate" title="Contact Us">Contact Us</Link>
-            <Link href="/" className="truncate" title="Services">Services</Link>
+            <Link href="/Login" className="truncate ml-auto" title="Login">Login</Link>
         </nav>
     )
 }
