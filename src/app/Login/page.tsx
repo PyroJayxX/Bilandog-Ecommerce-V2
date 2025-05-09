@@ -34,7 +34,7 @@ export default function Login() {
                                 Login
                             </button>
                             <p className="text-center text-white">
-                                I don't have an account.{" "}
+                                {"I don't have an account. "}
                                 <span className="text-[#F05A19] cursor-pointer hover:underline" onClick={() => toggleForm("signup")}>
                                     Sign up
                                 </span>
@@ -82,7 +82,7 @@ export default function Login() {
                                 Sign Up
                             </button>
                             <p className="text-center text-white">
-                                I already have an account.{" "}
+                                {"I already have an account. "}
                                 <span className="text-[#F05A19] cursor-pointer hover:underline" onClick={() => toggleForm("login")} >
                                     Login
                                 </span>
