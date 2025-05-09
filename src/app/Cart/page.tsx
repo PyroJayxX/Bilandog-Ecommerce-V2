@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-
 'use client';
+
+import React, { useState } from 'react';
 
 interface CartItem {
     id: number;
