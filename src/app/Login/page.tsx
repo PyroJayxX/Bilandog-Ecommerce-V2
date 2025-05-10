@@ -76,13 +76,13 @@ export default function Login() {
                 try {
                     const errorData = JSON.parse(errorText);
                     errorMessage = errorData.error || errorMessage;
-                } catch (e) {
+                } catch {
                     // pass
                 }
                 
                 showNotification("error", "Login Failed", errorMessage);
             }
-        } catch (error) {
+        } catch {
             showNotification("error", "Connection Error", "Could not connect to the server. Please try again.");
         }
     };
@@ -104,7 +104,7 @@ export default function Login() {
             });
     
             if (res.ok) {
-                const responseData = await res.json();
+                await res.json();
                 showNotification("success", "Registration Successful", "Your account has been created!");
                 setTimeout(() => {
                     toggleForm("login");
@@ -125,7 +125,7 @@ export default function Login() {
                     } else if (errorData.error) {
                         errorMessage = errorData.error;
                     }
-                } catch (e) {
+                } catch {
                     // Use default error message if can't parse
                 }
                 

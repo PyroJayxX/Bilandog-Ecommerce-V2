@@ -127,7 +127,7 @@ export default function CartDrawer() {
                 <p className="text-center text-lg text-gray-400">Your cart is empty.</p>
               ) : (
                 <div className="space-y-4">
-                  {items.map((item, idx) => (
+                  {items.map((item) => (
                     <motion.div
                       key={item.id}
                       initial={{ opacity: 0, x: 40 }}

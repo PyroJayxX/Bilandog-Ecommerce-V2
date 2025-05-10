@@ -11,32 +11,32 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-const refreshToken = async (logout: () => Promise<void>) => {
-  const refresh = localStorage.getItem('refreshToken');
-  if (!refresh) return false;
+// const refreshToken = async (logout: () => Promise<void>) => {
+//   const refresh = localStorage.getItem('refreshToken');
+//   if (!refresh) return false;
   
-  try {
-    const response = await fetch('http://localhost:8000/users/token/refresh/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ refresh }),
-    });
+//   try {
+//     const response = await fetch('http://localhost:8000/users/token/refresh/', {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//       body: JSON.stringify({ refresh }),
+//     });
     
-    if (response.ok) {
-      const data = await response.json();
-      localStorage.setItem('accessToken', data.access);
-      return true;
-    } else {
-      await logout();
-      return false;
-    }
-  } catch (error) {
-    console.error("Token refresh error:", error);
-    return false;
-  }
-};
+//     if (response.ok) {
+//       const data = await response.json();
+//       localStorage.setItem('accessToken', data.access);
+//       return true;
+//     } else {
+//       await logout();
+//       return false;
+//     }
+//   } catch (error) {
+//     console.error("Token refresh error:", error);
+//     return false;
+//   }
+// };
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
