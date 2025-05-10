@@ -14,9 +14,11 @@ class Order(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='orders')
     created_at = models.DateTimeField(auto_now_add=True)
     total_price = models.DecimalField(max_digits=10, decimal_places=2)
+    is_completed = models.BooleanField(default=False)  # Use this instead of status
+    completed_at = models.DateTimeField(null=True, blank=True)  # Optional: track completion time
 
     def __str__(self):
-        return f"Order {self.id} by {self.CustomUser.email}"
+        return f"Order {self.id} by {self.user.username}"
     
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='order_items')

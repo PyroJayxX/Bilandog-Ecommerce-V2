@@ -1,15 +1,55 @@
-import React from "react";
-import Card from "./Card";
+'use client';
 
-export const BestSellerGrid: React.FC = () => {
+import React, { useState, useEffect } from 'react';
+import Card from './Card';
+
+type Product = {
+  id: number;
+  image_file: string;
+  name: string;
+  price: number;
+};
+
+const BestSellerGrid = () => {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch('http://localhost:8000/orders/products/');
+        if (!response.ok) {
+          throw new Error('Failed to fetch products');
+        }
+        const data = await response.json();
+        setProducts(data);
+      } catch (err) {
+        console.error('Error fetching products:', err);
+        setError(err instanceof Error ? err.message : 'An unknown error occurred');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  if (loading) return <div className="text-center py-10">Loading products...</div>;
+  if (error) return <div className="text-center py-10 text-red-500">Error: {error}</div>;
+
   return (
-    <div className="w-full h-full text-white grid md:grid-cols-2 lg:grid-cols-3 gap-20 py-5 px-5 md:px-20 items-center">
-        <Card image="/images/HDrill.png" price="79" name="Hotdog ni Edrill" />
-        <Card image="/images/HDRimoo.png" price="69" name="Hotdog ni Rimoo" />
-        <Card image="/images/HDLans.png" price="59" name="Hotdog ni Lans" />
-        <Card image="/images/HDRoman.png" price="89" name="Hotdog ni Roman" />
-        <Card image="/images/HDJM.png" price="99" name="Hotdog ni JM" />
-        <Card image="/images/HDFred.png" price="80" name="Hotdog ni Habla" />
+    <div className="px-12 py-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8">
+      {products.map((product) => (
+        <Card
+          key={product.id}
+          id={product.id}
+          image={`/images/${product.image_file}`}
+          name={product.name}
+          price={product.price.toString()}
+          emoji="🌭"
+        />
+      ))}
     </div>
   );
 };
