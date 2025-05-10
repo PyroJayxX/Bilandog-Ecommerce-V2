@@ -131,7 +131,7 @@ export default function Login() {
                 
                 showNotification("error", "Registration Failed", errorMessage);
             }
-        } catch (error) {
+        } catch {
             showNotification("error", "Connection Error", "Could not connect to the server. Please try again.");
         }
     };
