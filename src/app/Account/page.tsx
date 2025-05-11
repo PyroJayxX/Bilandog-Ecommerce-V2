@@ -18,7 +18,6 @@ interface UserProfile {
 }
 
 export default function AccountSettings() {
-  const [profile, setProfile] = useState<UserProfile | null>(null);
   const [loading, setLoading] = useState(true);
   const [checkingAuth, setCheckingAuth] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -106,7 +105,6 @@ export default function AccountSettings() {
         }
         
         const data = await response.json();
-        setProfile(data);
         
         // Initialize form data with profile data (except password)
         setFormData({
@@ -363,7 +361,7 @@ export default function AccountSettings() {
                 
                 <div className="border-t border-[#333] my-6 pt-6">
                   <h2 className="text-xl text-white mb-4">Change Password</h2>
-                  <p className="text-gray-400 text-sm mb-4">Leave this field empty if you don't want to change your password.</p>
+                  <p className="text-gray-400 text-sm mb-4">Leave this field empty if you don&apos;t want to change your password.</p>
                   
                   {/* New Password */}
                   <div>

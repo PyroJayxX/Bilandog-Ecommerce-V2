@@ -5,7 +5,6 @@ import TopNav from '../../components/TopNav';
 import Footer from '../../components/Footer';
 import { useAuth } from '../../context/AuthContext';
 import { useRouter } from 'next/navigation';
-import Notif from '../../components/Notif';
 
 interface OrderItemType {
   id: number;
@@ -83,8 +82,9 @@ export default function PurchaseHistory() {
 
         const data = await response.json();
         setOrders(data);
-      } catch {
-        // pass
+      } catch(err) {
+        setError(err instanceof Error ? err.message : 'An error occurred');
+        console.error('Error fetching order history:', err);
       } finally {
         setLoading(false);
       }
@@ -142,7 +142,7 @@ export default function PurchaseHistory() {
           </div>
         ) : orders.length === 0 ? (
           <div className="bg-[#1e1e1e] p-8 rounded-md text-center">
-            <p className="text-white text-lg">You haven't placed any orders yet.</p>
+            <p className="text-white text-lg">You haven&apos;t placed any orders yet.</p>
             <button 
               onClick={() => router.push('/')}
               className="mt-4 bg-[#6C1814] text-white px-6 py-2 rounded hover:bg-[#d04e17] transition-colors"
