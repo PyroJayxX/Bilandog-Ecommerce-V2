@@ -11,8 +11,8 @@ Created for the purpose of practicing Django Stack:
 - Database: PostgreSQL
 - Runtime: NodeJS
 
-📝 **Credits**:
-
+> [!NOTE]
+> **Credits**:
 > Cart and notification modals were inspired by the work of [IEMDomain04](https://github.com/IEMDomain04/).
 
 ![alt text](public/images/preview.png)
