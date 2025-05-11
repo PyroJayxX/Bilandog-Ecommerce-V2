@@ -159,3 +159,42 @@ class ProductListView(APIView):
             return Response(product_list, status=status.HTTP_200_OK)
         except Exception as e:
             return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+class OrderHistoryView(APIView):
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
+    
+    def get(self, request):
+        """Get the user's order history"""
+        try:
+            # Get completed orders for the user
+            orders = Order.objects.filter(
+                user=request.user,
+                is_completed=True
+            ).order_by('-completed_at')
+            
+            # Format orders for response
+            order_history = []
+            for order in orders:
+                order_items = []
+                
+                for item in OrderItem.objects.filter(order=order).select_related('product'):
+                    order_items.append({
+                        "id": item.id,
+                        "product_name": item.product.name,
+                        "quantity": item.quantity,
+                        "price_at_purchase": float(item.price_at_purchase)
+                    })
+                
+                order_history.append({
+                    "id": order.id,
+                    "created_at": order.created_at,
+                    "completed_at": order.completed_at,
+                    "total_price": float(order.total_price),
+                    "order_items": order_items
+                })
+            
+            return Response(order_history, status=status.HTTP_200_OK)
+            
+        except Exception as e:
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

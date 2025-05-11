@@ -45,8 +45,8 @@ export const Topnav: React.FC = () => {
                                 Account
                             </button>
                             <div className="absolute text-base right-0 mt-2 w-48 bg-[#1f1f1fbe] text-white rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">
-                                <Link href="/" className="block px-4 py-2 hover:bg-gray-700">Account Info</Link>
-                                <Link href="/" className="block px-4 py-2 hover:bg-gray-700">Purchase History</Link>
+                                <Link href="/Account" className="block px-4 py-2 hover:bg-gray-700">Account Info</Link>
+                                <Link href="/History" className="block px-4 py-2 hover:bg-gray-700">Purchase History</Link>
                                 <button onClick={handleLogout} className="block w-full text-left px-4 py-2 hover:bg-gray-700">Logout</button>
                             </div>
                         </div>
