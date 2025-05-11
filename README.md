@@ -2,6 +2,8 @@
 
 Remastered version of Bilandog website I made from 2021.
 
+- Backend server is not yet deployed to the cloud so only localhost works for now.
+
 Created for the purpose of practicing Django Stack:
 
 - Frontend: ReactJS with NextJS framework and Tailwind CSS
@@ -9,8 +11,11 @@ Created for the purpose of practicing Django Stack:
 - Database: PostgreSQL
 - Runtime: NodeJS
 
-> 📝 **Credits**:  
+📝 **Credits**:
+
 > Cart and notification modals were inspired by the work of [IEMDomain04](https://github.com/IEMDomain04/).
+
+![alt text](public/images/preview.png)
 
 ## Getting Started
 
@@ -72,5 +77,3 @@ python manage.py runserver
 ### 5. Open the Website
 
 Go to [http://localhost:3000](http://localhost:3000)
-
-![alt text](public/images/preview.png)
