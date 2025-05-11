@@ -1,47 +1,76 @@
 # Bilandog-Ecommerce-V2
 
-(WORK IN PROGRESS)
-(BACKEND CURRENTLY IN PROGRESS)
-
 Remastered version of Bilandog website I made from 2021.
 
 Created for the purpose of practicing Django Stack:
 
 - Frontend: ReactJS with NextJS framework and Tailwind CSS
 - Backend: Django
-- Database: PostGreSQL
+- Database: PostgreSQL
 - Runtime: NodeJS
+
+> 📝 **Credits**:  
+> Cart and notification modals were inspired by the work of [IEMDomain04](https://github.com/IEMDomain04/).
 
 ## Getting Started
 
-First, install the required dependencies:
+### 1. Database Setup
 
-- in the repo directory
+1. In **PostgreSQL**, create a database named `bilandog_db`.
+2. Update `/backend/bilandog/settings.py` with your local PostgreSQL credentials:
+
+```python
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'bilandog_db',
+        'USER': 'your_postgres_username',
+        'PASSWORD': 'your_postgres_password',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+```
+
+### 2. Install Dependencies
+
+- In the **project root**:
 
 ```bash
 npm install
 ```
 
-- in the /backend directory
+- In the **`/backend`** folder:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Then, run the development server:
+### 3. Apply Migrations
 
-- in the repo directory
+- In the `/backend` folder:
+
+```bash
+python manage.py makemigrations
+python manage.py migrate
+```
+
+### 4. Run the Development Servers
+
+- In the **project root**:
 
 ```bash
 npm run dev
 ```
 
-- in the /backend directory (ensure that db is properly set up first)
+- In the **`/backend`** folder:
 
 ```bash
 python manage.py runserver
 ```
 
-Open [http://localhost:3000](http://localhost:3000)
+### 5. Open the Website
+
+Go to [http://localhost:3000](http://localhost:3000)
 
 ![alt text](public/images/preview.png)
