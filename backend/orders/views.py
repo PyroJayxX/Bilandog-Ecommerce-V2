@@ -132,7 +132,6 @@ class CartView(APIView):
             return Response({"message": "Cart updated successfully"}, status=status.HTTP_200_OK)
         
         except Exception as e:
-            # Log the error for debugging
             import traceback
             traceback.print_exc()
             return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
@@ -195,6 +194,40 @@ class OrderHistoryView(APIView):
                 })
             
             return Response(order_history, status=status.HTTP_200_OK)
+            
+        except Exception as e:
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+class CheckoutView(APIView):
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
+    
+    def post(self, request):
+        """Process checkout and convert cart to completed order"""
+        try:
+            # Find the user's current cart
+            cart = Order.objects.filter(
+                user=request.user,
+                is_completed=False
+            ).order_by('-created_at').first()
+            
+            if not cart:
+                return Response({"error": "No items in cart"}, status=status.HTTP_400_BAD_REQUEST)
+            
+            if not cart.order_items.exists():
+                return Response({"error": "Cart is empty"}, status=status.HTTP_400_BAD_REQUEST)
+                
+            # Mark the order as completed
+            cart.is_completed = True
+            cart.completed_at = timezone.now()
+            cart.save()
+            
+            # Return success response
+            return Response({
+                "success": True,
+                "message": "Your order has been placed successfully!",
+                "order_id": cart.id
+            }, status=status.HTTP_200_OK)
             
         except Exception as e:
             return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

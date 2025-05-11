@@ -5,6 +5,7 @@ import TopNav from '../../components/TopNav';
 import Footer from '../../components/Footer';
 import { useAuth } from '../../context/AuthContext';
 import { useRouter } from 'next/navigation';
+import Notif from '../../components/Notif';
 
 interface OrderItemType {
   id: number;
@@ -66,9 +67,24 @@ export default function PurchaseHistory() {
         const token = getToken();
         if (!token) throw new Error('No authentication token found');
         
-        // Your existing fetch code...
-      } catch (err) {
-        // Error handling...
+        const response = await fetch('http://localhost:8000/orders/history/', {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        });
+
+        if (!response.ok) {
+          if (response.status === 401) {
+            throw new Error('Authentication expired. Please log in again.');
+          }
+          throw new Error('Failed to fetch order history');
+        }
+
+        const data = await response.json();
+        setOrders(data);
+      } catch {
+        // pass
       } finally {
         setLoading(false);
       }
